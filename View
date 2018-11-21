@@ -3,23 +3,51 @@ import java.util.Scanner;
 
 public class View{
 
+ static File f = new File(".");
+
    public static void search()
    {
-   Scanner inp = new Scanner(System.in);
+  Scanner inp = new Scanner(System.in);
    System.out.println("Search by Event name, Date, or Project Manager!");
    CharSequence fileN = inp.nextLine();
    File dir = new File(".");
    boolean matched = false;
+   int x = 1;
    for (File f: dir.listFiles())
    {
       boolean thisFileMatches = f.getName().contains(fileN);
       if (thisFileMatches)
       { 
-         matches<-true;
-         System.out.println(f.getName());
-      } //to do: print error message when no file is found      
+         matched = true;
+         System.out.println("["+ x++ + "]" + " "+ f.getName());
+      }     
    }
    if (!matched){
    
    }
+   
+   System.out.println("Do you want to open a file? (true/false)");
+   boolean answ = inp.nextBoolean();
+   if (answ = true) {}
+   else if (answ = false) {Main.menu();}
+   else { System.out.println("Invalid answer"); Main.menu();}
+
+}
+
+   public static void readFile()
+   {
+   try {
+       FileReader s = new FileReader( new File (f.getName()). getAbsolutePath());
+     BufferedReader r = new BufferedReader(s);
+     String line;
+     while (true)
+     {
+       line = r.readLine();
+       if (line == null) break;
+       System.out.println(line);
+     }
+       r.close();
+   }
+catch(Exception e) { e.printStackTrace(); }
+  }
 }
