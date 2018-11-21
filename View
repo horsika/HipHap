@@ -1,1 +1,25 @@
+import java.io.*;
+import java.util.Scanner;
 
+public class View{
+
+   public static void search()
+   {
+   Scanner inp = new Scanner(System.in);
+   System.out.println("Search by Event name, Date, or Project Manager!");
+   CharSequence fileN = inp.nextLine();
+   File dir = new File(".");
+   boolean matched = false;
+   for (File f: dir.listFiles())
+   {
+      boolean thisFileMatches = f.getName().contains(fileN);
+      if (thisFileMatches)
+      { 
+         matches<-true;
+         System.out.println(f.getName());
+      } //to do: print error message when no file is found      
+   }
+   if (!matched){
+   
+   }
+}
